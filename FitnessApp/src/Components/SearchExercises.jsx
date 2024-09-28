@@ -12,11 +12,12 @@ const SearchExercises = ({setExercises, bodyPart, setBodyPart}) => {
     const fetchExercisesData = async()=>{
       const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions)
       setBodyParts(['all', ...bodyPartsData])
-      console.log(bodyPartsData)
+      console.log("bodyPartsData: " + bodyPartsData)
+      console.log("bodyParts: " + bodyParts)
+      console.log("bodyPart: " + bodyPart)
     }
 
     fetchExercisesData()
-    console.log(bodyParts)
   },[])
 
   const handleSearch= async()=>{
@@ -37,11 +38,11 @@ const SearchExercises = ({setExercises, bodyPart, setBodyPart}) => {
 
   return (
     <Stack alignItems='center' mt='37px' justifyContent='center' p='20px'>
-      <Typography fontWeight={'700'} sx={{fontSize:{lg:'44px', xs:'30px'}}} mb={'49px'} textAlign={'center'}>
+      <Typography fontWeight='700' sx={{fontSize:{lg:'44px', xs:'30px'}}} mb='49px' textAlign='center'>
         Awsome Exercises You Should Know
       </Typography>
 
-      <Box position={'relative'} mb={'72px'}>
+      <Box position='relative' mb='72px'>
         <TextField height='76px' sx={{input:{fontWeight:'700', border:'none', borderRadius:'4px'}, width:{lg:'1170px', xs:'350px'}, backgroundColor:'#fff', borderRadius:'40px'}}
         value={search}
         onChange={(e)=>{setSearch(e.target.value.toLowerCase())}}
@@ -51,8 +52,8 @@ const SearchExercises = ({setExercises, bodyPart, setBodyPart}) => {
         <Button className='search-btn' sx={{bgcolor:'#FF2625', color:'#fff', textTransform:'none', width: {lg:'173px', xs: '80px'}, height:'56px', position:'absolute', right:'0px', fontSize:{lg:'20px', xs:'14px'}}} onClick={handleSearch}>Search</Button>
       </Box>
 
-      <Box position={'relative'} width={'100%'} p={'20px'}>
-        <HorizontalScrollbar data={bodyParts} bodyPart={bodyPart} setBodyPart={setBodyPart} />
+      <Box position='relative' width='100%' p='20px'>
+        {/* <HorizontalScrollbar data={bodyParts} bodyPart={bodyPart} setBodyPart={setBodyPart} /> */}
       </Box>
     </Stack>
   )
